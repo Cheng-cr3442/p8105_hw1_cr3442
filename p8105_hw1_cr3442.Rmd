@@ -114,15 +114,22 @@ mean_character
 mean_factor
 ```
 
-The results show that the meaning of numeric and logical works and the meaning of character and factor doesn’t work.
+The results show that the meaning of numeric and logical works and the meaning of character and factor doesn’t work. I will discuss why these doesn't work at the end of the homework.
 
 Then I write a code chunk that applies the as.numeric function to the logical, character, and factor variables and try to coerce them to numeric, so I use numeric_xxx to represent these variables.
 
 ```{r coerce}
-# coerce variables to numeric
+# Coerce variables to numeric
 numeric_logical <- as.numeric(df$logical_vector)
 numeric_character <- as.numeric(df$character_vector)
 numeric_factor <- as.numeric(df$factor_vector)
+
+# Display the converted variables
+numeric_logical
+numeric_character
+numeric_factor
 ```
- 
- At last the problem 2 is done and hence the homework 1 is finished. I hope I make fewer mistakes. 
+The coercion works successfully in logical_vector and factor_vector, but doesn't work in character_vector. I guess the reason that the coercion doesn't work in character_vector because character data in R are strings and have no inherent numeric meaning, so R cannot convert them into numbers. And it also explains why the meaning of character doesn’t work. So how about factor? Even though factors can be coerced to numeric, those numeric values are just integer encodings of the categories, which have no mathematical meaning. Therefore, calculating the mean of factors doesn’t make sense, and while R might technically allow it, the result is not meaningful. 
+
+
+Finally the problem 2 is done and hence the homework 1 is finished. I hope I make fewer mistakes. 
