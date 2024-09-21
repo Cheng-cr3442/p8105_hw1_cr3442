@@ -1,0 +1,69 @@
+---
+title: "p8105_hw1_cr3442"
+author: "Cheng Rao"
+date: "2024-09-21"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+The purpose of this file is to finish p8105 homework 1 and test if I can submit the .Rmd successfully to the Github as I am just a beginner in R. This assignment will try to be consistent in format with a solution in Lecture 'Writing with data'. Now let me first deal with Problem 1.
+
+# Problem 1
+
+First we download a package containing the penguins dataset.
+
+```{r install_package, eval=FALSE}
+install.packages("palmerpenguins")
+```
+
+then we load the penguins dataset.
+
+```{r load_penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+Next we use inline R code to describe the data in this dataset, by using summary() and str(). At first summary().
+
+```{r penguins summary}
+penguins_summary <- summary(penguins)
+```
+
+Next str().
+
+```{r peguins structure}
+structure_penguins <- str(penguins)
+```
+
+The we describe the size of the dataset (using nrow and ncol).
+
+```{r size}
+# the size of the dataset (using nrow and ncol)
+number_rows <- nrow(penguins)
+number_cols <- ncol(penguins)
+```
+
+Then we calculate the mean of flipper length.
+
+```{r mean of flipper length}
+# the mean flipper length, ignoring missing value and calculate the mean
+mean_flipper_length <- mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+Next we make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x).
+
+```{r scatterplot}
+library(ggplot2)
+
+# make a scatterplot and the color points is using the species variable inside of aes, Use na.rm = TRUE to ignore missing values
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point(na.rm = TRUE) +
+  labs(title = "Scatterplot of flipper_length_mm (y) vs bill_length_mm (x)", x = "bill_length(mm)", y = "flipper_length(mm)") 
+```
+
+Now Problem 1 is finshed already and I want to summit it to the Github.
+
+
+
